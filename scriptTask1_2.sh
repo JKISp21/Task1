@@ -9,10 +9,6 @@ Green="\033[0;32m"
 #read "please enter the name of the file whith the list of the users: " userslist
 echo "please enter the name of the file whith the list of the users: "
 read userslist
-userslist='users.txt'
-
-#	mv /etc/subgid.lock /etc/subgid.lock2
-#	mv /etc/subgid /etc/subgid2
 
 for line in $(cat $userslist)
 do
@@ -29,7 +25,7 @@ echo "-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 	userN=`echo $line | cut -d : -f1`
 	groupN=`echo $line | cut -d : -f2`
 	passN=`echo $line | cut -d : -f3`
-	passNSsl=`openssl passwd -crypt $passN`
+	passNSsl=`openssl passwd -1 $passN`
 	shellN=`echo $line | cut -d : -f4`
 cat /etc/passwd
 echo -e "$Purple Proceed further? $NC"
