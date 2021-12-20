@@ -19,7 +19,7 @@ do
 	userN=`echo $line | cut -d : -f1`
 	groupN=`echo $line | cut -d : -f2`
 	passN=`echo $line | cut -d : -f3`
-	passNSsl=`openssl passwd -crypt $password`
+	passNSsl=`openssl passwd -1 $password`
 	shellN=`echo $line | cut -d : -f4`
 	echo $userN" | "$groupN" | "$passN" | "$shellN
 done
@@ -31,7 +31,7 @@ echo "-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 	passN=`echo $line | cut -d : -f3`
 	passNSsl=`openssl passwd -1 $passN`
 	shellN=`echo $line | cut -d : -f4`
-cat /etc/passwd
+#cat /etc/passwd
 echo -e "$Purple Proceed further? $NC"
 read further
 
@@ -74,7 +74,7 @@ do
 	userN=`echo $line | cut -d : -f1`
 	groupN=`echo $line | cut -d : -f2`
 	passN=`echo $line | cut -d : -f3`
-	passNSsl=`openssl passwd -crypt $passN`
+	passNSsl=`openssl passwd -1 $passN`
 	shellN=`echo $line | cut -d : -f4`
 	
 	useradd $userN
